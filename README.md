@@ -8,3 +8,4 @@ Unbound dns will use a different dns server every 15 min.
 4. As root, edit crontab (crontab -e) and add the contents from crontab.txt.
 5. done.
 
+Note: "Network based: outgoing tcp port 53 will be blocked for security reasons by iptables."
