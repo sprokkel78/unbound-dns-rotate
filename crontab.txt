@@ -1,0 +1,4 @@
+1 * * * * /root/unbound-dns-rotate.sh
+16 * * * * /root/unbound-dns-rotate.sh
+31 * * * * /root/unbound-dns-rotate.sh
+46 * * * * /root/unbound-dns-rotate.sh

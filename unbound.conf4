@@ -1,0 +1,84 @@
+server:
+    # Basisinstellingen
+    verbosity: 1
+    interface: 192.168.1.100
+    port: 53
+    #interface: 192.168.1.100@853  # IPv4
+    access-control: 192.168.1.0/24 allow
+    access-control: 127.0.0.0/8 allow
+
+    directory: "/etc/unbound/"
+    chroot: ""
+
+    # Enable TLS
+    tls-service-key: "/etc/unbound/unbound_server.key"
+    tls-service-pem: "/etc/unbound/unbound_server.pem"
+
+    # Enable Dns over TLS
+    tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"
+    tls-upstream: yes
+    root-hints: "/etc/unbound/root.hints"
+    auto-trust-anchor-file: "/var/lib/unbound/root.key"    
+    val-permissive-mode: no
+    trust-anchor-signaling: yes
+    
+    # Recursieve instellingen
+    do-ip4: yes
+    do-ip6: no
+    do-udp: yes
+    do-tcp: yes
+
+    log-queries: no
+    log-replies: no
+
+    hide-identity: yes
+    hide-version: yes
+    harden-glue: yes
+    harden-dnssec-stripped: yes
+    use-caps-for-id: yes
+    num-threads: 1
+    so-reuseport: yes
+
+    # Cache instellingen
+    cache-max-ttl: 86400
+    cache-min-ttl: 3600
+
+    prefetch: no
+    prefetch-key: no
+
+    # private-address: 192.168.1.0/24
+
+    # Local DNS data
+    local-zone: "lan." static
+
+    # A records
+    local-data: "router.lan. IN A 192.168.1.1"
+    local-data: "mac-mini.lan. IN A 192.168.1.100"
+    local-data: "lgtv.lan. IN A 192.168.1.101"
+    local-data: "wiz1.lan. IN A 192.168.1.103"
+    local-data: "nas.lan. IN A 192.168.1.104"
+    local-data: "mac-pro.lan. IN A 192.168.1.106"
+    local-data: "wiz2.lan. IN A 192.168.1.107"
+    local-data: "wiz3.lan. IN A 192.168.1.108"
+    local-data: "dell-intel.lan. IN A 192.168.1.112"
+    local-data: "dell-optiplex.lan. IN A 192.168.1.113"
+    local-data: "repeater.lan. IN A 192.168.1.200"
+
+    # PTR records for reverse DNS
+    local-data-ptr: "192.168.1.1 router.lan."
+    local-data-ptr: "192.168.1.100 mac-mini.lan."
+    local-data-ptr: "192.168.1.101 lgtv.lan."
+    local-data-ptr: "192.168.1.103 wiz1.lan."
+    local-data-ptr: "192.168.1.104 nas.lan."
+    local-data-ptr: "192.168.1.106 mac-pro.lan."
+    local-data-ptr: "192.168.1.107 wiz2.lan."
+    local-data-ptr: "192.168.1.108 wiz3.lan."
+    local-data-ptr: "192.168.1.112 dell-intel.lan."
+    local-data-ptr: "192.168.1.113 dell-optiplex.lan."
+    local-data-ptr: "192.168.1.200 repeater.lan"
+
+forward-zone:
+    name: "."
+    forward-tls-upstream: yes
+    forward-addr: 208.67.222.222@853
+    forward-addr: 208.67.220.220@853
