@@ -1,6 +1,6 @@
 ![Screenshot](https://github.com/sprokkel78/unbound-dns-rotate/blob/main/title.png)
 
-Unbound dns will use a different dns server every 15 min.
+Unbound dns will rotate between 4 dns servers at random every 15 min.
 
 1. Place the unbound.conf* files in your unbound directory, probably /etc/unbound.
 2. Edit these files according to your preferences.
