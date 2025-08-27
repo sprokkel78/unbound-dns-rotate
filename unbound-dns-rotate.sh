@@ -1,15 +1,15 @@
 #!/bin/sh
 
 # ROTATE BETWEEN DNS SERVERS
-MIN=$(date +%M)
+RAND=$((1 + $RANDOM % 4))
 
-if [ $MIN -gt 0 -a $MIN -lt 15 ]; then
+if [ $RAND -eq 1 ]; then
     cp /etc/unbound/unbound.conf1 /etc/unbound/unbound.conf
     systemctl restart unbound
-elif [ $MIN -gt 15 -a $MIN -lt 30 ]; then
+elif [ $RAND -eq 2 ]; then
     cp /etc/unbound/unbound.conf2 /etc/unbound/unbound.conf
     systemctl restart unbound
-elif [ $MIN -gt 30 -a $MIN -lt 45 ]; then
+elif [ $RAND -eq 3 ]; then
     cp /etc/unbound/unbound.conf3 /etc/unbound/unbound.conf
     systemctl restart unbound
 else
