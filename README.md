@@ -1,4 +1,4 @@
-# unbound-dns-rotate
+![Screenshot](https://github.com/sprokkel78/unbound-dns-rotate/blob/main/title.png)
 
 Unbound dns will use a different dns server every 15 min.
 
