@@ -53,3 +53,8 @@ forward-zone:
     forward-tls-upstream: yes
     forward-addr: 8.8.8.8@853
     forward-addr: 8.8.4.4@853
+
+remote-control:
+    control-enable: yes
+    control-interface: 127.0.0.1
+    control-port: 8953
