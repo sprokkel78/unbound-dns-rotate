@@ -6,6 +6,6 @@ Unbound dns will rotate between 4 dns servers at random every 15 min.
 2. Edit these files according to your preferences.
 3. Place the unbound-dns-rotate.sh in your root directory. (must be executable)
 4. As root, edit crontab (crontab -e) and add the contents from crontab.txt.
-5. done.
+5. Restart unbound : $sudo systemctl restart unbound
 
-Note: "Network based: outgoing tcp port 53 will be blocked for security reasons by iptables."
+Note: "Network based: outgoing tcp port 53 will be blocked for security reasons by iptables." (Optional)
